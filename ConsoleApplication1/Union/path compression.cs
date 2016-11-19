@@ -12,9 +12,7 @@ namespace quikUnion
     {
         public unionCompressionWeighted(int n) : base(n)
         {
-
-
-    }
+        }
 
         public override Tuple<int, int> root(int i)
         {

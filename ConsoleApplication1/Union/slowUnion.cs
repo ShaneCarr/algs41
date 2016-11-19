@@ -11,7 +11,7 @@ namespace quikUnion
 {
     class slowUnion
     {
-        int[] ids;
+        public  int[] ids;
         public slowUnion(int N)
         {
             this.ids = new int[N];

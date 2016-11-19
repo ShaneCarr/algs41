@@ -10,9 +10,7 @@ namespace quikUnion
     // flatten as we find the root. 
     public class SocialNetworkConnectivity : unionCompressionWeighted
     {
-        // N members
-        // M timestamps
-         
+     
         public SocialNetworkConnectivity(int n) : base(n)
         {
         }

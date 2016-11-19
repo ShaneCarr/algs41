@@ -114,7 +114,27 @@ namespace quikUnion
 
             var p = new PeopleGenerator();
             var people = p.Generate(memberCOunt);
-            Console.Read();
+            p.Print(people);
+
+            var sortedMemberRelation = people.OrderBy(i => i.RelationShipTime).ToList();
+            p.Print(sortedMemberRelation);
+      
+            // all of these members. Draw connections between them at various times
+            quickunion u = new quickunion(memberCOunt);
+            foreach(var memberRelation in sortedMemberRelation)
+            {
+                u.union(memberRelation.Member1, memberRelation.Member2);
+            }
+
+            // Get the earliest time. for a relationshop of the network of people.
+            /*
+             * design an algorithm to determine the earliest time at which all members are connected (i.e., every member is a friend of a friend of a friend ... of a friend). Assume that the log 
+             * */
+             for(int i=0;i<memberCOunt; i++)
+            {
+                Tuple<int, int> root = u.root(i);
+                Console.WriteLine("Item: {0} Root: {1}", i, root.Item1);
+            }
         }
 
 

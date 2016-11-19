@@ -18,7 +18,7 @@ namespace quikUnion
 {
     public class weightedUnion
     {
-        protected int[] ids;
+        public int[] ids;
 
         public weightedUnion(int n)
         {

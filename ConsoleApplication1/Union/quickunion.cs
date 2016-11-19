@@ -9,7 +9,7 @@ namespace quikUnion
     // still not great. this will walk up the nodes in the "tree" but it doesn't make any effort to optimization the creation of the tree
     public class quickunion
     {
-        private int[] ids;
+        public int[] ids;
 
         public quickunion(int n)
         {
