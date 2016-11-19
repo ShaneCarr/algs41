@@ -20,6 +20,22 @@ namespace quikUnion
     {
         public int[] ids;
 
+        // hash table. i could have done this wtih a 2d array too. where the rowsvalue in zero is the 
+        // root, and the values after are the items in the group. 
+        public Dictionary<int, List<int>> groups = new Dictionary<int, List<int>>();
+
+
+        public int FindLarget(int i)
+        {
+            var r = this.root(i);
+            if (this.groups.ContainsKey(r.Item1))
+            {
+                return groups[r.Item1].Max();
+            }
+
+            return r.Item1;
+        }
+
         public weightedUnion(int n)
         {
             this.ids = new int[n];
@@ -72,18 +88,62 @@ namespace quikUnion
             var rootP = root(p);
             var rootQ = root(q);
 
+
             // if p's depth is less than qs point p to q. This minimizes the size
             // if q's dept is less then use point to to P's root. 
             // this is becase your starting point the root it is alwasy better to add to teh smaller of the two. rather than the big one.
             // link root to the smaller tree to the larger.
             if (rootP.Item2 < rootQ.Item2)
             {
+                // i could also create a data structure 
+                // instead of just numbers and when i set p to q
+                // set q to p. this would give a two direction node.
+                //p poits to q
                 ids[rootP.Item1] = rootQ.Item1;
+
+                UpdateGroups(q, p, rootQ, rootP);
+
             }
             else
             {
                 ids[rootQ.Item1] = rootP.Item1;
+
+                UpdateGroups(p, q, rootP, rootQ);
             }
+
+        }
+
+        private void UpdateGroups(int parent, int child, Tuple<int, int> newRoot, Tuple<int, int> oldRoot)
+        {
+            // keep the dictionary of q to hold p's data
+            // update group.
+            if (!groups.ContainsKey(newRoot.Item1))
+            {
+                groups.Add(newRoot.Item1, new List<int>());
+                groups[newRoot.Item1].Add(parent);
+            }
+
+            // keep the dictionary of p to hold q's data
+            // update group.
+            if (!groups.ContainsKey(newRoot.Item1))
+            {
+                groups.Add(newRoot.Item1, new List<int>());
+            }
+
+            if (groups.ContainsKey(oldRoot.Item1))
+            {
+                groups[newRoot.Item1].AddRange(groups[oldRoot.Item1]);
+            }
+            
+            // don't need q anymore
+            if (groups.ContainsKey(oldRoot.Item1) && oldRoot.Item1!= newRoot.Item1)
+            {
+                groups.Remove(oldRoot.Item1);
+            }
+
+            groups[newRoot.Item1].Add(parent);
+            groups[newRoot.Item1].Add(child);
+            groups[newRoot.Item1] = groups[newRoot.Item1].Distinct().ToList();
         }
 
         public void Print()

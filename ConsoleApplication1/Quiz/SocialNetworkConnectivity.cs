@@ -13,7 +13,9 @@ namespace quikUnion
      
         public SocialNetworkConnectivity(int n) : base(n)
         {
+            
         }
+
 
     }
 }

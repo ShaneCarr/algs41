@@ -120,7 +120,7 @@ namespace quikUnion
             p.Print(sortedMemberRelation);
       
             // all of these members. Draw connections between them at various times
-            quickunion u = new quickunion(memberCOunt);
+            weightedUnion u = new weightedUnion(memberCOunt);
             foreach(var memberRelation in sortedMemberRelation)
             {
                 u.union(memberRelation.Member1, memberRelation.Member2);
@@ -135,11 +135,11 @@ namespace quikUnion
                 Tuple<int, int> root = u.root(i);
                 Console.WriteLine("Item: {0} Root: {1}", i, root.Item1);
             }
+
+            var max = u.FindLarget(3);
+            Console.WriteLine(max);
         }
-
-
-
-
+         
     }
      
  

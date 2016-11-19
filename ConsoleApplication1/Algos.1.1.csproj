@@ -49,6 +49,7 @@
     <Compile Include="Quiz\MemberTimeStampRelationShip.cs" />
     <Compile Include="Quiz\PeopleGenerator.cs" />
     <Compile Include="Quiz\SocialNetworkConnectivity.cs" />
+    <Compile Include="Union\relathionShopPointer.cs" />
     <Compile Include="Union\path compression.cs" />
     <Compile Include="Union\quickunion.cs" />
     <Compile Include="Union\slowUnion.cs" />
