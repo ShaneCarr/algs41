@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApplication1.Quiz;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace quikUnion
 
             }
 
-            
+
             Console.WriteLine(w.Elapsed);
 
             //========================================================
@@ -68,7 +69,7 @@ namespace quikUnion
             }
 
             Console.WriteLine(w.Elapsed);
-           
+
             // this dept can't be bigger tahn log (2) 6000 should be 8 max.
 
 
@@ -97,9 +98,31 @@ namespace quikUnion
             wu.Metrics();
             uc.Metrics();
 
-            Console.Read(); 
+            // N members
+            // M timestamps
+
+            // 1 k members
+            int n = 1000;
+
+
+            // 100 relationships these are teh relationshops between members
+            // var m = GetTimeStamps(100);
+
+            // connect members 100 for the time stamps. find earliest common root.
+            var memberCOunt = 10; // tecnically + 1 i don't care.
+
+
+            var p = new PeopleGenerator();
+            var people = p.Generate(memberCOunt);
+            Console.Read();
         }
 
 
+
+
     }
+     
+ 
 }
+
+
